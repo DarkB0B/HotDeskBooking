@@ -20,11 +20,18 @@ namespace HotDeskBooking.Controllers
         [HttpPost]
         public async Task<IActionResult> CreateUser(string username, string password)
         {
-            if(await _usersService.Register(username, password))
+            try
             {
-                return Ok();
+                if (await _usersService.Register(username, password))
+                {
+                    return Ok();
+                }
+                return BadRequest();
             }
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
         }
 
     }
