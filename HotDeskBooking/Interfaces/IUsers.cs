@@ -6,7 +6,6 @@ namespace HotDeskBooking.Interfaces
     {
         Task<bool> Register (string username, string password);
         Task<string> Login (string username, string password);
-        Task<bool> UserExists (string username);
         Task<User> GetUserByName(string username);
     }
 }

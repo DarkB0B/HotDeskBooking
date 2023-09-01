@@ -11,7 +11,7 @@ namespace HotDeskBooking.Services
 {
     public class UsersService : IUsers
     {
-        readonly DataContext _context;
+        private readonly DataContext _context;
         private readonly IConfiguration _configuration;
 
         public UsersService(DataContext context, IConfiguration configuration)
@@ -68,11 +68,7 @@ namespace HotDeskBooking.Services
         public async Task<bool> Register(string username, string password)
         {
             
-            Role? role = await _context.Roles.FindAsync(1);
-            if (role == null)
-            {
-                return false;
-            }
+            Role role = await _context.Roles.FindAsync(1);            
             try
             {
                 User userInDb = await GetUserByName(username);
@@ -88,10 +84,18 @@ namespace HotDeskBooking.Services
             return false;
 
         }
-
-        public Task<bool> UserExists(string username)
+        public async Task<bool> UpdateUserToAdmin(int id)
         {
-            throw new NotImplementedException();
+            User? user = await _context.Users.FindAsync(id);
+            if (user == null)
+            {
+                throw new ArgumentException("Incorrect Id");
+            }
+            Role role = await _context.Roles.FindAsync(2);
+            user.Role = role;
+            await _context.SaveChangesAsync();
+            return true;
         }
+
     }
 }
