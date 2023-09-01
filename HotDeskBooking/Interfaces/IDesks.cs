@@ -7,8 +7,8 @@ namespace HotDeskBooking.Interfaces
         Task<bool> AddDesk(Desk desk);
         Task<bool> DeleteDesk(int id);
         Task<Desk> GetDesk(int id);
-        Task<List<Desk>> GetAvailableDesks(DateTime? startDate, DateTime? endDate);
-        Task<List<Desk>> GetAvailableDesksByOffice(int officeId, DateTime? startDate, DateTime? endDate);
+        Task<List<Desk>> GetAvailableDesks(DateTime? startDateTime, DateTime? endDateTime);
+        Task<List<Desk>> GetAvailableDesksByOffice(int officeId, DateTime? startDateTime, DateTime? endDateTime);
         Task<List<Desk>> GetDesks();
         Task<List<Desk>> GetDesksByOffice(int officeId);
         Task<bool> ChangeAvailability(int id);
