@@ -3,7 +3,9 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace HotDeskBooking.DataAccess
+#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
+
+namespace HotDeskBooking.Migrations
 {
     /// <inheritdoc />
     public partial class InitialCreate : Migration
@@ -62,7 +64,7 @@ namespace HotDeskBooking.DataAccess
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Username = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Password = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     RoleId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -103,6 +105,15 @@ namespace HotDeskBooking.DataAccess
                         principalTable: "Users",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.InsertData(
+                table: "Roles",
+                columns: new[] { "Id", "Name" },
+                values: new object[,]
+                {
+                    { 1, "Employee" },
+                    { 2, "Admin" }
                 });
 
             migrationBuilder.CreateIndex(

@@ -7,25 +7,28 @@ namespace HotDeskBooking.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class UsersController : ControllerBase
+    public class TokensController : ControllerBase
     {
         private readonly IUsers _usersService;
 
-        public UsersController(IUsers usersService)
+        public TokensController(IUsers usersService)
         {
             _usersService = usersService;
         }
 
         [AllowAnonymous]
         [HttpPost]
-        public async Task<IActionResult> CreateUser(string username, string password)
+        public async Task<IActionResult> CreateToken(string username, string password)
         {
-            if(await _usersService.Register(username, password))
+            try
             {
-                return Ok();
+                string token = await _usersService.Login(username, password);
+                return Ok(token);
             }
-            return BadRequest();
+            catch (Exception ex)
+            {
+                return BadRequest(new { error = ex.Message });
+            }
         }
-
     }
 }
