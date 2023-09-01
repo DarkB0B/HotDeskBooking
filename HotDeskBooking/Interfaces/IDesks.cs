@@ -1,4 +1,5 @@
 ﻿using HotDeskBooking.Models;
+using System.Runtime.InteropServices;
 
 namespace HotDeskBooking.Interfaces
 {
