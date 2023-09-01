@@ -8,6 +8,8 @@ namespace HotDeskBooking.Interfaces
         Task<bool> DeleteDesk(int id);
         Task<Desk> GetDesk(int id);
         Task<List<Desk>> GetDesks();
+        Task<List<Desk>> GetDesksByOffice(int officeId);
+        Task<bool> ChangeAvailability(int id);
         Task<bool> UpdateDesk(Desk desk);
     }
 }
