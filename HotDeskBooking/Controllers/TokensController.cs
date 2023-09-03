@@ -27,7 +27,7 @@ namespace HotDeskBooking.Controllers
             }
             catch (Exception ex)
             {
-                return BadRequest(new { error = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
     }

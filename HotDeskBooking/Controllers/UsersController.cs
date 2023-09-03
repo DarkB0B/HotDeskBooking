@@ -24,15 +24,12 @@ namespace HotDeskBooking.Controllers
         {
             try
             {
-                if (await _usersService.Register(username, password))
-                {
-                    return Ok();
-                }
-                return BadRequest();
+                await _usersService.Register(username, password);
+                 return Ok();
             }
             catch (Exception ex)
             {
-                return BadRequest(new { error = ex.Message });
+                return BadRequest(ex.Message);
             }
         }
         [Authorize(Roles = "Admin")]
@@ -41,15 +38,12 @@ namespace HotDeskBooking.Controllers
         {
             try
             {
-                if(await _usersService.UpdateUserToAdmin(id))
-                {
-                    return Ok();
-                }
-                return BadRequest();
+                await _usersService.UpdateUserToAdmin(id);
+                return Ok();
             }
             catch (Exception ex)
             {
-                return BadRequest(new {error = ex.Message});
+                return BadRequest(ex.Message);
             }
         }
 

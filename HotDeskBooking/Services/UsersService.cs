@@ -65,10 +65,10 @@ namespace HotDeskBooking.Services
             return new JwtSecurityTokenHandler().WriteToken(token);
         }
 
-        public async Task<bool> Register(string username, string password)
+        public async Task Register(string username, string password)
         {
             
-            Role role = await _context.Roles.FindAsync(1);            
+            Role role = await _context.Roles.FirstOrDefaultAsync(r => r.Id == 1);            
             try
             {
                 User userInDb = await GetUserByName(username);
@@ -78,13 +78,10 @@ namespace HotDeskBooking.Services
                 User newUser = new User { Username = username, Password = password, Role = role };
                 await _context.Users.AddAsync(newUser);
                 await _context.SaveChangesAsync();
-                return true;
             }
-
-            return false;
-
+            throw new ArgumentException("User with this name allready exists");
         }
-        public async Task<bool> UpdateUserToAdmin(int id)
+        public async Task UpdateUserToAdmin(int id)
         {
             User? user = await _context.Users.FindAsync(id);
             if (user == null)
@@ -94,7 +91,6 @@ namespace HotDeskBooking.Services
             Role role = await _context.Roles.FindAsync(2);
             user.Role = role;
             await _context.SaveChangesAsync();
-            return true;
         }
 
     }

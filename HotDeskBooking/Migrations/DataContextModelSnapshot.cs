@@ -30,17 +30,20 @@ namespace HotDeskBooking.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<int>("OfficeId")
+                    b.Property<bool>("IsAvailable")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("LocationId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.HasIndex("OfficeId");
+                    b.HasIndex("LocationId");
 
                     b.ToTable("Desks");
                 });
 
-            modelBuilder.Entity("HotDeskBooking.Models.Office", b =>
+            modelBuilder.Entity("HotDeskBooking.Models.Location", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -54,7 +57,7 @@ namespace HotDeskBooking.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Office");
+                    b.ToTable("Locations");
                 });
 
             modelBuilder.Entity("HotDeskBooking.Models.Reservation", b =>
@@ -101,18 +104,6 @@ namespace HotDeskBooking.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Roles");
-
-                    b.HasData(
-                        new
-                        {
-                            Id = 1,
-                            Name = "Employee"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            Name = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("HotDeskBooking.Models.User", b =>
@@ -143,13 +134,13 @@ namespace HotDeskBooking.Migrations
 
             modelBuilder.Entity("HotDeskBooking.Models.Desk", b =>
                 {
-                    b.HasOne("HotDeskBooking.Models.Office", "Office")
+                    b.HasOne("HotDeskBooking.Models.Location", "Location")
                         .WithMany("Desks")
-                        .HasForeignKey("OfficeId")
+                        .HasForeignKey("LocationId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Office");
+                    b.Navigation("Location");
                 });
 
             modelBuilder.Entity("HotDeskBooking.Models.Reservation", b =>
@@ -187,7 +178,7 @@ namespace HotDeskBooking.Migrations
                     b.Navigation("Reservations");
                 });
 
-            modelBuilder.Entity("HotDeskBooking.Models.Office", b =>
+            modelBuilder.Entity("HotDeskBooking.Models.Location", b =>
                 {
                     b.Navigation("Desks");
                 });

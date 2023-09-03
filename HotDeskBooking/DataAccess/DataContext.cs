@@ -15,14 +15,12 @@ namespace HotDeskBooking.DataAccess
         public DbSet<Reservation> Reservations { get; set; }
         public DbSet<Role> Roles { get; set; }
         public DbSet<User> Users { get; set; }
-        public DbSet<Office> Office { get; set; }
+        public DbSet<Location> Locations { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Role>().HasData(
-               new Role { Name = "Employee", Id = 1 },
-               new Role { Name = "Admin", Id = 2 }
-           );
+
+
         }
     }
 }

@@ -3,8 +3,6 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-#pragma warning disable CA1814 // Prefer jagged arrays over multidimensional
-
 namespace HotDeskBooking.Migrations
 {
     /// <inheritdoc />
@@ -14,7 +12,7 @@ namespace HotDeskBooking.Migrations
         protected override void Up(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.CreateTable(
-                name: "Office",
+                name: "Locations",
                 columns: table => new
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
@@ -23,7 +21,7 @@ namespace HotDeskBooking.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Office", x => x.Id);
+                    table.PrimaryKey("PK_Locations", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -45,15 +43,16 @@ namespace HotDeskBooking.Migrations
                 {
                     Id = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
-                    OfficeId = table.Column<int>(type: "int", nullable: false)
+                    LocationId = table.Column<int>(type: "int", nullable: false),
+                    IsAvailable = table.Column<bool>(type: "bit", nullable: false)
                 },
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Desks", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Desks_Office_OfficeId",
-                        column: x => x.OfficeId,
-                        principalTable: "Office",
+                        name: "FK_Desks_Locations_LocationId",
+                        column: x => x.LocationId,
+                        principalTable: "Locations",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
                 });
@@ -107,19 +106,10 @@ namespace HotDeskBooking.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
-            migrationBuilder.InsertData(
-                table: "Roles",
-                columns: new[] { "Id", "Name" },
-                values: new object[,]
-                {
-                    { 1, "Employee" },
-                    { 2, "Admin" }
-                });
-
             migrationBuilder.CreateIndex(
-                name: "IX_Desks_OfficeId",
+                name: "IX_Desks_LocationId",
                 table: "Desks",
-                column: "OfficeId");
+                column: "LocationId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_Reservations_DeskId",
@@ -150,7 +140,7 @@ namespace HotDeskBooking.Migrations
                 name: "Users");
 
             migrationBuilder.DropTable(
-                name: "Office");
+                name: "Locations");
 
             migrationBuilder.DropTable(
                 name: "Roles");
