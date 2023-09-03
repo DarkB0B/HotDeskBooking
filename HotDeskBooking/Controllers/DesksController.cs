@@ -102,7 +102,7 @@ namespace HotDeskBooking.Controllers
             {
                 return BadRequest(ex.Message);
             }
-        }
+        }      
         [Authorize(Roles = "Admin")]
         [HttpPatch]
         public async Task<IActionResult> ChangeAvailability(int id)

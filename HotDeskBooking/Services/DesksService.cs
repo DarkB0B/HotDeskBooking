@@ -80,7 +80,7 @@ namespace HotDeskBooking.Services
                 DateTime startDate = startDateTime.Value.Date;
                 DateTime endDate = endDateTime.Value.Date;
                 List<int> reservedDeskIds = await _context.Reservations.Where(r => r.StartDate < endDate && r.EndDate > startDate).Select(r => r.Desk.Id).ToListAsync();
-                List<Desk> desks = await _context.Desks.Where(d => d.Location.Id == locationId && d.IsAvailable == true && !reservedDeskIds.Contains(d.Id)).ToListAsync();
+                List<Desk> desks = await _context.Desks.Where(d => d.Location.Id == locationId && d.IsAvailable == true && !reservedDeskIds.Contains(d.Id)).Include(d => d.Location).ToListAsync();
                 return desks;
             }
                 return await _context.Desks.Where(d => d.Location.Id == locationId).Where(d => d.IsAvailable == true).ToListAsync();
@@ -117,7 +117,7 @@ namespace HotDeskBooking.Services
 
         public async Task<List<Desk>> GetDesks(bool isAdmin)
         {
-            if(isAdmin == false)
+            if(isAdmin == false || isAdmin == null)
             {
                 return await GetDesks();
             }
@@ -131,7 +131,7 @@ namespace HotDeskBooking.Services
 
         public async Task<List<Desk>> GetDesksByLocation(int locationId, bool isAdmin)
         {
-            if(isAdmin == false)
+            if(isAdmin == false || isAdmin == null)
             {
                 return await GetDesksByLocation(locationId);
             }
