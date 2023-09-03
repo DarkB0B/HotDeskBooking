@@ -26,7 +26,7 @@ namespace HotDeskBooking.Services
         }
         public async Task AddReservation(Reservation reservation)
         {
-            Reservation reservationInDb = await _context.Reservations.Include(r => r.User).Include(r => r.Desk).FirstOrDefaultAsync(r => r.Id == reservation.Id);
+            Reservation reservationInDb = await _context.Reservations.Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).FirstOrDefaultAsync(r => r.Id == reservation.Id);
             if (reservationInDb != null)
             {
                 throw new ArgumentException();
@@ -60,7 +60,7 @@ namespace HotDeskBooking.Services
 
         public async Task<Reservation> GetReservation(int id)
         {
-            Reservation reservation = await _context.Reservations.Include(r => r.User).Include(r => r.Desk).FirstOrDefaultAsync(r => r.Id == id);
+            Reservation reservation = await _context.Reservations.Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).FirstOrDefaultAsync(r => r.Id == id);
             if(reservation == null)
             {
                 throw new ArgumentException("Reservation with this Id does not exist");
@@ -70,17 +70,17 @@ namespace HotDeskBooking.Services
 
         public async Task<List<Reservation>> GetReservations()
         {
-            return await _context.Reservations.Include(r => r.User).Include(r => r.Desk).ToListAsync();
+            return await _context.Reservations.Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).ToListAsync();
         }
 
         public async Task<List<Reservation>> GetReservationsByDesk(int deskId)
         {
-            return await _context.Reservations.Where(r => r.Desk.Id == deskId).Include(r => r.User).Include(r => r.Desk).ToListAsync();
+            return await _context.Reservations.Where(r => r.Desk.Id == deskId).Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).ToListAsync();
         }
 
         public async Task<List<Reservation>> GetReservationsByEmployee(int employeeId)
         {
-            return await _context.Reservations.Where(r => r.User.Id == employeeId).Include(r => r.User).Include(r => r.Desk).ToListAsync();
+            return await _context.Reservations.Where(r => r.User.Id == employeeId).Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).ToListAsync();
         }
 
         public async Task RemoveReservation(int id)

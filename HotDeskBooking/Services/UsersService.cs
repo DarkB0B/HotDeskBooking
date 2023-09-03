@@ -26,7 +26,7 @@ namespace HotDeskBooking.Services
             {
                 throw new ArgumentException("Invalid user credentials provided.");
             }
-            User user = await _context.Users.Include(u => u.Role).Include(u => u.Reservations).FirstOrDefaultAsync(u => u.Username == username);
+            User user = await _context.Users.Include(u => u.Role).Include(u => u.Role).Include(u => u.Reservations).FirstOrDefaultAsync(u => u.Username == username);
             
             if (user == null)
             {
