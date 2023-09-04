@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "ZB2HpGThP+WAWhYZgiyA8qvG1rmmSrPVuSpaXKjLDnz4WDw2EPRdnF521nZePd6z5b+S2vOo3+ebLC7u6f+gow==",
+  "dgSpecHash": "DT2AR/b1n02LkUms5XVRtKLpDFRwwiXRXuvZKyN8xyBK3ccjreFFJjUdcYYSHsQ75CFr6YaIALymuOP41yN8Og==",
   "success": true,
-  "projectFilePath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
+  "projectFilePath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\miecz\\.nuget\\packages\\azure.core\\1.24.0\\azure.core.1.24.0.nupkg.sha512",
     "C:\\Users\\miecz\\.nuget\\packages\\azure.identity\\1.6.0\\azure.identity.1.6.0.nupkg.sha512",

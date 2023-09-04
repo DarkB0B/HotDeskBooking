@@ -44,7 +44,6 @@ namespace HotDeskTests
             var badRequestResult = Assert.IsType<BadRequestObjectResult>(result);
             Assert.Equal("Can't delete desk with pending reservations.", badRequestResult.Value);
         }
-        
         [Fact]
         public async Task GetDesks_AdminRole_ReturnsUserInformation()
         {
@@ -83,5 +82,7 @@ namespace HotDeskTests
             Assert.NotNull(returnedDesks.First().Reservations.First().User);
             Assert.Equal("TestUser", returnedDesks.First().Reservations.First().User.Username);
         }
+        
+
     }  
 }

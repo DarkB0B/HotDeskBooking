@@ -24,7 +24,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\HotDeskBooking\HotDeskBooking\HotDeskBooking.csproj" />
+    <ProjectReference Include="..\HotDeskAPI\HotDeskBooking\HotDeskBooking.csproj" />
   </ItemGroup>
 
 </Project>

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj": {}
+    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj": {}
   },
   "projects": {
-    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking.csproj": {
+    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\HotDeskBooking.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking.csproj",
+        "projectUniqueName": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\HotDeskBooking.csproj",
         "projectName": "HotDeskBooking",
-        "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking.csproj",
+        "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\HotDeskBooking.csproj",
         "packagesPath": "C:\\Users\\miecz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\obj\\",
+        "outputPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -111,14 +111,14 @@
         }
       }
     },
-    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj": {
+    "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
+        "projectUniqueName": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
         "projectName": "HotDeskTests",
-        "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
+        "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\HotDeskTests.csproj",
         "packagesPath": "C:\\Users\\miecz\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskTests\\obj\\",
+        "outputPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskTests\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -140,8 +140,8 @@
           "net7.0": {
             "targetAlias": "net7.0",
             "projectReferences": {
-              "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking.csproj": {
-                "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking\\HotDeskBooking.csproj"
+              "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\HotDeskBooking.csproj": {
+                "projectPath": "C:\\Users\\miecz\\source\\repos\\DarkB0B\\Booking\\HotDeskBooking\\HotDeskAPI\\HotDeskBooking\\HotDeskBooking.csproj"
               }
             }
           }

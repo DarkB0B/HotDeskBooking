@@ -70,7 +70,7 @@ namespace HotDeskBooking.Services
 
         public async Task<List<Reservation>> GetReservations()
         {
-            return await _context.Reservations.Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).ToListAsync();
+            return await _context.Reservations.Include(r => r.User).ThenInclude(u => u.Role).Include(r => r.Desk).ThenInclude(d => d.Location).ToListAsync();
         }
 
         public async Task<List<Reservation>> GetReservationsByDesk(int deskId)
